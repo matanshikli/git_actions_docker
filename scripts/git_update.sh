@@ -21,15 +21,14 @@ echo "Current Version: $CURRENT_VERSION"
 
 CURRENT_VERSION_NUMBER=(${CURRENT_VERSION//./ })
 VNUM=${CURRENT_VERSION_NUMBER[0]}
-let "VNUM=VNUM+1"
-VNUM="v$VNUM"
+VNUM=$((VNUM+1))
 
 GIT_COMMIT=$(git rev-parse HEAD)
 NEEDS_TAG=$(git describe --contains $GIT_COMMIT 2>/dev/null)
 
 if [ -z "$NEEDS_TAG" ]; then
   echo "Tagged with $VNUM"
-  git tag $VNUM
+  git tag v$VNUM
   git push --tags
   git push
 else
