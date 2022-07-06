@@ -3,7 +3,7 @@
 VERSION=""
 
 # get parameters
-while getopts v: flag
+while getopts flag
 do
   case "${flag}" in
     v) VERSION=${OPTARG};;
