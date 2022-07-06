@@ -26,7 +26,7 @@ jobs:
     - name: Automatic Tagging
       id: increment-git-tag
       run: |
-        bash ./scripts/git_update.sh
+        bash ./scripts/git_update.sh 
 
     - name: Configure Docker Client
       run: |-
