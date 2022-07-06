@@ -25,8 +25,8 @@ CURRENT_VERSION_PARTS=(${CURRENT_VERSION//./ })
 
 # get number parts
 VNUM1=${CURRENT_VERSION_PARTS[0]}
-
-  VNUM1=v$((VNUM1+1))
+let "VNUM1=VNUM1+1"
+  VNUM1=v$VNUM1
 
 
 # create new tag
