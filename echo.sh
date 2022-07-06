@@ -1,7 +1,3 @@
-from flask import Flask
+#!/bin/bash
 
-app = Flask(__name__)
-
-@app.route("/hello")
-def hello_world():
-    return "Hello, World!"
+echo "the script works!"
