@@ -3,7 +3,7 @@
 VERSION=""
 
 # get parameters
-while getopts flag
+while getopts v: flag
 do
   case "${flag}" in
     v) VERSION=${OPTARG};;
@@ -21,8 +21,8 @@ echo "Current Version: $CURRENT_VERSION"
 
 CURRENT_VERSION_NUMBER=(${CURRENT_VERSION//./ })
 VNUM=${CURRENT_VERSION_NUMBER[0]}
-let "VNUM=VNUM+1"
-VNUM="v$VNUM"
+
+VNUM=v$((VNUM+1))
 
 GIT_COMMIT=$(git rev-parse HEAD)
 NEEDS_TAG=$(git describe --contains $GIT_COMMIT 2>/dev/null)
