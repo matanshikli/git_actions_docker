@@ -21,7 +21,7 @@ echo "Current Version: $CURRENT_VERSION"
 
 CURRENT_VERSION_NUMBER=(${CURRENT_VERSION//./ })
 VNUM=${CURRENT_VERSION_NUMBER[0]}
-VNUM=v$((VNUM+1))
+VNUM=$((VNUM+1))
 
 GIT_COMMIT=$(git rev-parse HEAD)
 NEEDS_TAG=$(git describe --contains $GIT_COMMIT 2>/dev/null)
