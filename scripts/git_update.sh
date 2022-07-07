@@ -1,5 +1,4 @@
 #!/bin/bash
-
 VERSION=""
 
 # get parameters
@@ -20,16 +19,11 @@ then
 fi
 echo "Current Version: $CURRENT_VERSION"
 
-# replace . with space so can split into an array
 CURRENT_VERSION_PARTS=${CURRENT_VERSION##*v}
-
-# get number parts
 VNUM1=${CURRENT_VERSION_PARTS[0]}
-let "VNUM1=VNUM1+1"
-  VNUM1=v$VNUM1
+ let "VNUM1=VNUM1+1"
+ VNUM1=v$VNUM1
 
-
-# create new tag
 NEW_TAG=$VNUM1
 echo "updating $CURRENT_VERSION to $NEW_TAG"
 
@@ -37,7 +31,6 @@ echo "updating $CURRENT_VERSION to $NEW_TAG"
 GIT_COMMIT=`git rev-parse HEAD`
 NEEDS_TAG=`git describe --contains $GIT_COMMIT 2>/dev/null`
 
-# only tag if no tag already
 if [ -z "$NEEDS_TAG" ]; then
   echo "Tagged with $NEW_TAG"
   git tag $NEW_TAG
@@ -46,7 +39,5 @@ if [ -z "$NEEDS_TAG" ]; then
 else
   echo "Already a tag on this commit"
 fi
-
 echo ::set-output name=git-tag::$NEW_TAG
-
 exit 0
